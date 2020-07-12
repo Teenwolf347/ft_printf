@@ -6,7 +6,7 @@
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 11:42:45 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/12 12:44:30 by student          ###   ########.fr       */
+/*   Updated: 2020/07/12 19:03:10 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void			ft_format_check(char *f, int *i, t_args *args, va_list argptr)
 				|| (f[*i] >= '0' && f[*i] <= '9')))
 	{
 		ft_check_flag(f, i, args);
+		ft_check_width(f, i, args, argptr);
 		ft_check_precision(f, i, args, argptr);
 	}
 	ft_check_conv(f[*i], args);
