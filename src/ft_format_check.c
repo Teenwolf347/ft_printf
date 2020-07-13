@@ -80,8 +80,7 @@ static void		ft_check_precision(char *f, int *i, t_args *args, va_list arg)
 static void		ft_check_conv(char conv, t_args *args)
 {
 	if (conv == 'i' || conv == 'd' || conv == 'c' || conv == 's' || conv == 'p'
-			|| conv == 'u' || conv == 'x' || conv == 'X' || conv == 'f'
-			|| conv == '%')
+			|| conv == 'u' || conv == 'x' || conv == 'X' || conv == '%')
 		CONV = conv;
 	else
 		CONV = -1;

@@ -54,7 +54,7 @@ static int	ft_printf_continuation(char *format, va_list argptr)
 			ft_initialization_args(&args);
 			ft_format_check(format, &i, &args, argptr);
 			args.conv != 0 && args.conv != -1 ? i++ : i;
-			ft_printf_format(&args, argptr); // Добавить потом и переменовать
+			ft_printf_write_format(&args, argptr);
 			result = result + args.result;
 			start = i;
 		}
