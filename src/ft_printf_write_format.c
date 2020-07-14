@@ -17,9 +17,9 @@ void	ft_printf_write_format(t_args *args, va_list argptr)
 	if (CONV == '%' || CONV == -1)
 		ft_printf_write_precision(args);
 	else if (CONV == 's')
-		ft_printf_write_string(args, argptr); // Потом
+		ft_printf_write_string(args, argptr);
 	else if (CONV == 'c')
-		ft_printf_write_char(args, argptr); // Потом
+		ft_printf_write_char(args, argptr);
 	else if (CONV == 'p')
 		ft_printf_write_pointer(args, argptr); // Потом
 	else if (CONV == 'd' || CONV == 'i')
