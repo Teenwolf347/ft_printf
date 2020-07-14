@@ -6,7 +6,7 @@
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 18:29:55 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/14 19:19:22 by student          ###   ########.fr       */
+/*   Updated: 2020/07/14 19:31:00 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				ft_printf_write_string(t_args *args, va_list argptr)
 
 	str = va_arg(argptr, char *);
 	if (str == NULL)
-		str = NULL;
+		str = "(null)";
 	LENGTH = ft_strlen(str);
 	ft_printf_char_or_string(args);
 	while (MINUS == 0 && WIDTH > 0)
