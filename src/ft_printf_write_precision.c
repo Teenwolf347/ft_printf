@@ -20,19 +20,19 @@ void	ft_printf_write_precision(t_args *args)
 	while (MINUS == 0 && width < WIDTH - 1)
 	{
 		if (ZERO == 1)
-			ft_putchar_precision('0', args);
+			ft_putchar_prec('0', args);
 		else
-			ft_putchar_precision(' ', args);
+			ft_putchar_prec(' ', args);
 		width++;
 	}
 	if (CONV != -1)
-		ft_putchar_precision('%', args);
+		ft_putchar_prec('%', args);
 	while (width < WIDTH - 1)
 	{
 		if (ZERO == 1)
-			ft_putchar_precision('0', args);
+			ft_putchar_prec('0', args);
 		else
-			ft_putchar_precision(' ', args);
+			ft_putchar_prec(' ', args);
 		width++;
 	}
 }

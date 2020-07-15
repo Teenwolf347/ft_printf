@@ -43,15 +43,15 @@ void				ft_printf_write_char(t_args *args, va_list argptr)
 	while (MINUS == 0 && WIDTH > 0)
 	{
 		if (ZERO == 1)
-			ft_putchar_precision('0', args);
+			ft_putchar_prec('0', args);
 		else
-			ft_putchar_precision(' ', args);
+			ft_putchar_prec(' ', args);
 		WIDTH--;
 	}
-	ft_putchar_precision(c, args);
+	ft_putchar_prec(c, args);
 	while (WIDTH > 0)
 	{
-		ft_putchar_precision(' ', args);
+		ft_putchar_prec(' ', args);
 		WIDTH--;
 	}
 }
@@ -68,18 +68,18 @@ void				ft_printf_write_string(t_args *args, va_list argptr)
 	while (MINUS == 0 && WIDTH > 0)
 	{
 		if (ZERO == 1)
-			ft_putchar_precision('0', args);
+			ft_putchar_prec('0', args);
 		else
-			ft_putchar_precision(' ', args);
+			ft_putchar_prec(' ', args);
 		WIDTH--;
 	}
 	if (WIDTH < 0)
 		WIDTH = ((WIDTH * (-1)) - (LENGTH * 2)) - 1;
 	while (*str != '\0' && LENGTH > 0)
 	{
-		ft_putchar_precision(*str++, args);
+		ft_putchar_prec(*str++, args);
 		LENGTH++;
 	}
 	while (WIDTH-- > 0)
-		ft_putchar_precision(' ', args);
+		ft_putchar_prec(' ', args);
 }
