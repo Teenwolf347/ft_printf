@@ -61,7 +61,7 @@ void			ft_printf_write_int(t_args *args, va_list argptr)
 	while (PRECISION-- > 0)
 		ft_putchar_prec('0', args);
 	if (LENGTH > 0 || (number == 0 && IFPREC == 0))
-		ft_putchar_prec(number, args);
+		ft_putnbr_prec(number, args);
 	while (WIDTH-- > 0)
 		ft_putchar_prec(' ', args);
 }

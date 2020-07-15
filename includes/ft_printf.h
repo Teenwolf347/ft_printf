@@ -52,6 +52,7 @@ void			ft_putchar_prec(char c, t_args *args);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_printf_write_precision(t_args *args);
 void			ft_putstr_prec(char *str, t_args *args);
+void			ft_putnbr_prec(long int number, t_args *args);
 void			ft_printf_write_int(t_args *a, va_list argptr);
 void			ft_printf_write(int start, int i, char *format);
 void			ft_printf_write_char(t_args *args, va_list argptr);
