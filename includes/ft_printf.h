@@ -55,6 +55,7 @@ void			ft_putstr_prec(char *str, t_args *args);
 void			ft_putnbr_prec(long int number, t_args *args);
 void			ft_printf_write_int(t_args *a, va_list argptr);
 void			ft_printf_write(int start, int i, char *format);
+void			ft_printf_write_unsig_int(t_args *args, va_list a);
 void			ft_printf_write_char(t_args *args, va_list argptr);
 void			ft_printf_write_pointer(t_args *args, va_list argp);
 void			ft_printf_write_string(t_args *args, va_list argptr);

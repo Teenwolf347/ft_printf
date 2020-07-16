@@ -25,5 +25,5 @@ void	ft_printf_write_format(t_args *args, va_list argptr)
 	else if (CONV == 'd' || CONV == 'i')
 		ft_printf_write_int(args, argptr);
 	else if (CONV == 'u' || CONV == 'x' || CONV == 'X')
-		ft_printf_write_unsigned_int(args, argptr); // Потом
+		ft_printf_write_unsig_int(args, argptr);
 }
