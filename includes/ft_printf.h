@@ -61,7 +61,7 @@ void			ft_printf_write_pointer(t_args *args, va_list argp);
 void			ft_printf_write_string(t_args *args, va_list argptr);
 void			ft_printf_write_format(t_args *args, va_list argptr);
 void			ft_format_check(char *f, int *i, t_args *args, va_list argptr);
-char			*ft_itoa(int n);
+char			*ft_itoa(long int n);
 char			*ft_strrev(char *str);
 char			*ft_convert(t_args *args, long long int number);
 char			*ft_convert_hex(unsigned long int number, int t);
