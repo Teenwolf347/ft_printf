@@ -6,13 +6,13 @@
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 17:18:48 by tturnber          #+#    #+#             */
-/*   Updated: 2020/05/18 21:46:48 by student          ###   ########.fr       */
+/*   Updated: 2020/07/17 16:06:29 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_itoa(long int nbr)
+char			*ft_itoa(long int nbr)
 {
 	long		sign;
 	long		count;
@@ -38,4 +38,3 @@ char	*ft_itoa(long int nbr)
 	}
 	return (str);
 }
-
