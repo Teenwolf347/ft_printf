@@ -18,7 +18,7 @@ char		*ft_convert_hex(unsigned long int number, int t)
 	char	*str;
 
 	i = 0;
-	str = ft_bzero(21);
+	str = ft_bzero(17);
 	if (number == 0)
 		str[i] = '0';
 	if (t == 0)

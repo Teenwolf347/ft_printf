@@ -6,7 +6,7 @@
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:25:54 by tturnber          #+#    #+#             */
-/*   Updated: 2020/05/21 17:09:01 by student          ###   ########.fr       */
+/*   Updated: 2020/07/20 12:13:44 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 int					ft_atoi(const char *str)
 {
-	int				i;
-	int				negativ;
-	unsigned long	number;
+	long res;
+	long sign;
 
-	i = 0;
-	number = 0;
-	negativ = 1;
-	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t' || str[i] == '\v'
-				|| str[i] == '\n' || str[i] == '\r' || str[i] == '\f'))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	res = 0;
+	sign = 1;
+	while (*str == '\t' || *str == '\n' || *str == '\r' || *str == '\v' ||
+			*str == '\f' || *str == ' ')
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		if (str[i] == '-')
-			negativ = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		number = ((long)(number * 10) + (str[i++] - '0'));
-		if (number > 9223372036854775807 && negativ == 1)
+		if ((unsigned long)__LONG_MAX__ < ((unsigned long)res * 10 + (*str -
+						'0')) && sign == 1)
 			return (-1);
-		if (number > 9223372036854775807 && negativ == -1)
+		else if ((unsigned long)__LONG_MAX__ < ((unsigned long)res * 10 +
+					(*str - '0')) && sign == -1)
 			return (0);
+		res = res * 10 + (*str - '0');
+		str++;
 	}
-	return (number * negativ);
+	return (res * sign);
 }

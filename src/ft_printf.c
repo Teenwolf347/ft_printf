@@ -50,7 +50,7 @@ static int	ft_printf_continuation(char *format, va_list argptr)
 		if (format[i] == '%')
 		{
 			ft_printf_write(start, i, format);
-			result = (result + i) - start;
+			result = result + i - start;
 			ft_initialization_args(&args);
 			ft_format_check(format, &i, &args, argptr);
 			args.conv != 0 && args.conv != -1 ? i++ : i;
@@ -61,7 +61,7 @@ static int	ft_printf_continuation(char *format, va_list argptr)
 		format[i] != '\0' && format[i] != '%' ? i++ : i;
 	}
 	ft_printf_write(start, i, format);
-	return ((result + i) - start);
+	return (result + i - start);
 }
 
 int			ft_printf(const char *format, ...)

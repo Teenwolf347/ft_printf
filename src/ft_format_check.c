@@ -6,7 +6,7 @@
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 11:42:45 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/12 19:03:10 by student          ###   ########.fr       */
+/*   Updated: 2020/07/20 12:21:40 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		ft_check_flag(char *format, int *i, t_args *args)
 {
-	while (format[*i] != '\0' && (format[*i] == '0'
+	while (format[*i] && (format[*i] == '0'
 				|| format[*i] == '-'))
 	{
 		if (format[*i] == '-')
@@ -30,7 +30,7 @@ static void		ft_check_flag(char *format, int *i, t_args *args)
 
 static void		ft_check_width(char *f, int *i, t_args *args, va_list argptr)
 {
-	while (f[*i] != '\0' && (f[*i] == '*' || (f[*i] >= '0' && f[*i] <= '9')))
+	while (f[*i] && (f[*i] == '*' || (f[*i] >= '0' && f[*i] <= '9')))
 	{
 		if (f[*i] == '*')
 		{
@@ -52,10 +52,10 @@ static void		ft_check_precision(char *f, int *i, t_args *args, va_list arg)
 {
 	char *ptr;
 
-	if (f[*i] != '.')
-		return ;
 	ptr = f;
 	PRECISION = 0;
+	if (f[*i] != '.')
+		return ;
 	*i += 1;
 	IFPREC = 1;
 	while (f[*i] != '\0' && (f[*i] == '-' || f[*i] == '*'
@@ -89,9 +89,13 @@ static void		ft_check_conv(char conv, t_args *args)
 void			ft_format_check(char *f, int *i, t_args *args, va_list argptr)
 {
 	*i += 1;
-	while (f[*i] != '\0' && (f[*i] == '.' || f[*i] == '-'
-				|| f[*i] == '0' || f[*i] == '*'
-				|| (f[*i] >= '0' && f[*i] <= '9')))
+	if (f[*i] == ' ')
+	{
+		*i += 1;
+		ft_putchar_prec(' ', args);
+	}
+	while (f[*i] && (f[*i] == '.' || f[*i] == '-' || f[*i] == '0'
+				|| f[*i] == '*' || (f[*i] >= '0' && f[*i] <= '9')))
 	{
 		ft_check_flag(f, i, args);
 		ft_check_width(f, i, args, argptr);

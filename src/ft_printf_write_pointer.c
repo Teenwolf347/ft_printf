@@ -6,7 +6,7 @@
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 18:31:35 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/15 19:17:13 by student          ###   ########.fr       */
+/*   Updated: 2020/07/20 12:18:45 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void						ft_printf_write_pointer(t_args *args, va_list argp)
 		ft_putstr_prec(str, args);
 		return ;
 	}
-	if (ZERO == 0)
+	if (ZERO)
 		ft_putstr_prec("0x", args);
 	while (MINUS == 0 && WIDTH-- > 0)
 		ZERO == 1 ? ft_putchar_prec('0', args) : ft_putchar_prec(' ', args);
