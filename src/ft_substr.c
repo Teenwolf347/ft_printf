@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_hex.c                                   :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 18:50:28 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/15 18:55:38 by student          ###   ########.fr       */
+/*   Created: 2020/05/04 18:53:19 by tturnber          #+#    #+#             */
+/*   Updated: 2020/05/19 17:11:17 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char		*ft_convert_hex(unsigned long int number, int t)
+char		*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	int		i;
-	char	*str;
+	size_t	i;
+	char	*dst;
 
-	i = 0;
-	str = ft_bzero(17);
-	if (number == 0)
-		str[i] = '0';
-	if (t == 0)
-		while (number != 0)
+	if (!s || len <= 0 || start >= ft_strlen(s))
+		return (ft_strdup(""));
+	dst = malloc(sizeof(char) * (len + 1));
+	if (dst == NULL)
+		return (NULL);
+	if (start < ft_strlen(s))
+	{
+		i = 0;
+		while (s[start + i] && i < len)
 		{
-			str[i] = "0123456789abcdef"[number % 16];
-			number /= 16;
+			dst[i] = s[start + i];
 			i++;
 		}
-	else
-		while (number != 0)
-		{
-			str[i] = "0123456789ABCDEF"[number % 16];
-			number /= 16;
-			i++;
-		}
-	return (ft_strrev(str));
+		dst[i] = '\0';
+	}
+	return (dst);
 }

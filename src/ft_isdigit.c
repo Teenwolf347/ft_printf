@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 19:26:15 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/15 19:28:58 by student          ###   ########.fr       */
+/*   Created: 2020/07/23 13:19:09 by tturnber          #+#    #+#             */
+/*   Updated: 2020/07/23 13:21:38 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_strrev(char *str)
+int		ft_isdigit(int c)
 {
-	int	i;
-	int	buf;
-	int j;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	j = 0;
-	while (j < i - 1)
-	{
-		buf = str[i - 1];
-		str[i - 1] = str[j];
-		str[j] = buf;
-		i--;
-		j++;
-	}
-	return (str);
+	if (c >= '0' && c <= '9')
+		return (c);
+	return (0);
 }

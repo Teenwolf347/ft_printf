@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/05 16:46:13 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/15 18:05:01 by student          ###   ########.fr       */
+/*   Created: 2020/07/20 16:02:21 by tturnber          #+#    #+#             */
+/*   Updated: 2020/07/24 23:25:18 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,51 +18,40 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-# define PTR args->ptr
-# define CONV args->conv
-# define ZERO args->zero
-# define START args->start
-# define WIDTH args->width
-# define MINUS args->minus
-# define LENGTH args->length
-# define RESULT args->result
-# define IFPREC args->ifprec
-# define PRECISION args->precision
-
 typedef struct	s_args
 {
-	int			ptr;
-	char		conv;
+	int			max;
+	int			min;
+	int			type;
+	char		flag;
 	int			zero;
-	int			start;
-	int			width;
-	int			minus;
+	int			dots;
+	int			error;
 	int			length;
-	int			result;
-	int			ifprec;
-	int			precision;
+	int			flag_type;
 }				t_args;
 
+int				ft_isdigit(int c);
+int				ft_get_long(int i);
 int				ft_atoi(const char *str);
-int				ft_strcmp(char *s1, char *s2);
 int				ft_printf(const char *format, ...);
+int				ft_write_char(t_args *args, char str);
+int				ft_write_int(t_args *args, int number);
+int				ft_write_string(t_args *args, char *str);
+int				ft_check_flag(t_args *args, const char *format);
+int				ft_write_x(unsigned int number, t_args *args, int t);
+int				ft_write_unsigned_int(unsigned int number, t_args *args);
+int				ft_write_pointer(unsigned long long number, t_args *args);
+int				ft_check_arguments(t_args *args, char *format,
+									int st, va_list *arg);
+char			*ft_strdup(const char *s1);
+char			*ft_substr(const char *s, unsigned int start, size_t len);
+void			ft_putnbr_fd(int n, int fd);
+void			ft_putstr_fd(char *s, int fd);
+void			ft_putchar_fd(char c, int fd);
+void			ft_get_int(int d, t_args *args);
+void			ft_putnbr_unsigned_int(unsigned int number);
+void			ft_write_format(t_args *args, va_list *argptr);
 size_t			ft_strlen(const char *s);
-void			*ft_bzero(size_t n);
-void			ft_putchar_prec(char c, t_args *args);
-void			*ft_memset(void *b, int c, size_t len);
-void			ft_printf_write_precision(t_args *args);
-void			ft_putstr_prec(char *str, t_args *args);
-void			ft_putnbr_prec(long int number, t_args *args);
-void			ft_printf_write_int(t_args *a, va_list argptr);
-void			ft_printf_write(int start, int i, char *format);
-void			ft_printf_write_unsig_int(t_args *args, va_list a);
-void			ft_printf_write_char(t_args *args, va_list argptr);
-void			ft_printf_write_pointer(t_args *args, va_list argp);
-void			ft_printf_write_string(t_args *args, va_list argptr);
-void			ft_printf_write_format(t_args *args, va_list argptr);
-void			ft_format_check(char *f, int *i, t_args *args, va_list argptr);
-char			*ft_itoa(long int n);
-char			*ft_strrev(char *str);
-char			*ft_convert(t_args *args, long long int number);
-char			*ft_convert_hex(unsigned long int number, int t);
+
 #endif

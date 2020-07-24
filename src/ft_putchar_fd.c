@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 13:15:58 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/20 12:14:52 by student          ###   ########.fr       */
+/*   Created: 2020/05/04 17:40:51 by tturnber          #+#    #+#             */
+/*   Updated: 2020/05/04 17:42:12 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		*ft_memset(void *b, int c, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*tmp;
-	size_t	i;
-
-	i = 0;
-	tmp = b;
-	while (i < len)
-		tmp[i++] = c;
-	return (b);
+	write(fd, &c, 1);
 }
