@@ -5,91 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tturnber <tturnber@MSK.21-SCHOOL.RU>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/20 15:30:46 by tturnber          #+#    #+#             */
-/*   Updated: 2020/07/25 00:03:00 by student          ###   ########.fr       */
+/*   Created: 2020/07/25 20:38:31 by tturnber          #+#    #+#             */
+/*   Updated: 2020/07/26 18:44:08 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int	ft_initialization(t_args *args)
+static void	ft_initialization(t_args *args)
 {
-	args->max = 0;
-	args->min = 0;
 	args->type = 0;
-	args->flag = 0;
 	args->zero = 0;
-	args->dots = 0;
-	args->error = 0;
-	args->length = 0;
-	args->flag_type = 0;
-	return (1);
-}
-
-static int	ft_clean_args(t_args *args)
-{
-	if (args)
-	{
-		args->max = 0;
-		args->min = 0;
-		args->type = 0;
-		args->flag = 0;
-		args->zero = 0;
-		args->dots = 0;
-		args->flag_type = 0;
-	}
-	return (-1);
-}
-
-static int	ft_space(const char *format, int i, t_args *args)
-{
-	if (format[i + 1] == ' ')
-	{
-		ft_putchar_fd(' ', 1);
-		args->length++;
-		i++;
-	}
-	return (i);
-}
-
-static int	ft_printf_con(t_args *args, int *i, const char *f, va_list *argptr)
-{
-	int		ch;
-
-	ch = ft_check_arguments(*&args, (char *)f, *i, *&argptr);
-	if (ch == -1)
-		return (-1);
-	*i = *i + ch;
-	ft_write_format(*&args, *&argptr);
-	ft_clean_args(*&args);
-	return (1);
+	args->width = 0;
+	args->minus = 0;
+	args->pointer = 0;
+	args->precn = 0;
 }
 
 int			ft_printf(const char *format, ...)
 {
-	va_list argptr;
+	int		result;
+	va_list	argptr;
 	t_args	args;
-	int		i;
 
-	va_start(argptr, format);
-	if (!(ft_initialization(&args)))
+	if (!format)
 		return (-1);
-	i = 0;
-	while (format[i] != '\0')
+	va_start(argptr, format);
+	result = 0;
+	while (*format != '\0')
 	{
-		if (format[i] == '%')
+		while (*format != '%' && *format != '\0')
 		{
-			i = ft_space(format, i, &args);
-			if (ft_printf_con(&args, &i, format, &argptr) == -1)
-				return (-1);
+			ft_putchar_fd(*(format++), 1);
+			result++;
 		}
-		else
-		{
-			ft_putchar_fd(format[i], 1);
-			args.length++;
-			i++;
-		}
+		ft_initialization(&args);
+		format = (*format != '\0') ?
+			ft_printf_format(argptr, ++format, &args) : format;
+		if (args.zero && args.minus)
+			args.zero = 0;
+		result = ft_write_format(argptr, result, args);
 	}
 	va_end(argptr);
-	return (args.length);
+	return (result);
 }

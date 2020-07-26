@@ -15,23 +15,17 @@ CC = gcc
 NAME = libftprintf.a
 
 SRCS = src/ft_atoi.c \
-	src/ft_check_arguments.c \
-	src/ft_check_flag.c \
-	src/ft_get.c \
-	src/ft_isdigit.c \
+	src/ft_memchr.c \
+	src/ft_printf_putnbr.c \
 	src/ft_printf.c \
+	src/ft_printf_format.c \
 	src/ft_putchar_fd.c \
-	src/ft_putnbr_fd.c \
 	src/ft_putstr_fd.c \
-	src/ft_strdup.c \
 	src/ft_strlen.c \
-	src/ft_substr.c \
-	src/ft_write_char_or_string.c \
+	src/ft_write_string_or_char.c \
 	src/ft_write_format.c \
-	src/ft_write_int.c \
-	src/ft_write_pointer.c \
-	src/ft_write_unsigned_int.c \
-	src/ft_write_xx.c
+	src/ft_write_number.c \
+	src/ft_write_pointer.c
 
 OBJS = -Wall -Wextra -Werror -c
 

@@ -12,9 +12,9 @@
 
 #include "../includes/ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd, int length)
 {
 	if (!s)
 		return ;
-	write(fd, s, ft_strlen(s));
+	write(fd, s, length);
 }
